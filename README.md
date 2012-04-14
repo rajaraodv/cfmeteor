@@ -27,7 +27,9 @@ Usage:
 #### Step 3: Uploading meteor.com apps to Cloud Foundry:
 1. From inside, `myapp/bundle`, do `vmc push myapp --runtime node06`
 
-2. And when vmc asks for "Do you need any services?", bind to MongoDB service 
+2. And when vmc asks for "Do you need any services?", bind to MongoDB service (db service name doesn't matter) 
+
+3. That's it, you should have your app fully working by now.
 
 
 Details
