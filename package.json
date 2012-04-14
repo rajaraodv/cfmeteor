@@ -1,0 +1,13 @@
+{
+	"name": "cfmeteor",
+	"description": "Helper library on top of 'cloudfoundry' module to bridge Meteor.com apps and Cloud Foundry",
+	"version": "0.1.0",
+	"homepage": "https://github.com/rajaraodv/cfmeteor",
+	"keywords": ["cloud", "cloudfoundry", "meteor"],
+	"author": "Raja Rao DV <rajar@vmware.com>",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/rajaraodv/cfmeteor.git"
+	}
+}
