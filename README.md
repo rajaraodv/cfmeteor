@@ -18,7 +18,7 @@ Usage:
 
 6. **CD into <app>/bundle/server** (this is the main folder for all the Node.js server scripts)
 
-7. **npm install cfmeteor** inside *bundle/server* folder (so that this get installed in bundle/server/cfmeteor)
+7. **npm install cfmeteor** inside **bundle/server** folder (so that this get installed in **bundle/server/cfmeteor**)
 
 8. Open **bundle/server/server.js** and add **require("cfmeteor");** as the first line so that this cfmeteor module is run before anything else. 
 

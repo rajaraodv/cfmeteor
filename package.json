@@ -1,9 +1,9 @@
 {
 	"name": "cfmeteor",
-	"description": "Helper library that makes it eazy to bridge & run Meteor.com apps and Cloud Foundry",
+	"description": "Helper library that makes it eazy to bridge & run Meteor.com apps on Cloud Foundry Open PaaS http://cloudfoundry.com",
 	"version": "0.1.0",
 	"homepage": "https://github.com/rajaraodv/cfmeteor",
-	"keywords": ["cloud", "cloudfoundry", "meteor"],
+	"keywords": ["cloud", "cloudfoundry", "meteor", "paas", "meteorjs"],
 	"author": "Raja Rao DV <rajar@vmware.com>",
 	"main": "index.js",
 	"repository": {
