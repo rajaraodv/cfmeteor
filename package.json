@@ -1,6 +1,6 @@
 {
 	"name": "cfmeteor",
-	"description": "Helper library on top of 'cloudfoundry' module to bridge Meteor.com apps and Cloud Foundry",
+	"description": "Helper library that makes it eazy to bridge & run Meteor.com apps and Cloud Foundry",
 	"version": "0.1.0",
 	"homepage": "https://github.com/rajaraodv/cfmeteor",
 	"keywords": ["cloud", "cloudfoundry", "meteor"],

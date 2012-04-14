@@ -10,14 +10,17 @@ Usage:
 
 2. But instead of deploying to meteor.com's servers by doing 'meteor deploy app.meteor.com', we will install on Cloud Foundry.
 
-3. Do "meteor bundle" this collects all the libraries required and creates a bundle.tar.gz file in your app directory
+3. Inside the app folder, do **meteor bundle** this collects all the libraries required and creates a bundle.tar.gz file 
 
-4. Untar the bundle tarball: tar -xvzf bundle.tar.gz 
+4. Untar the bundle tarball: **tar -xvzf bundle.tar.gz** to <app>/bundle/ 
 
-5. CD into bundle/server (this is the main folder for all the Node.js server scripts)
+5. From now on **<app>/bundle** folder is the actual app.
 
-6. npm install cfmeteor inside bundle/server folder (so that this get installed in bundle/server/cfmeteor)
+6. **CD into <app>/bundle/server** (this is the main folder for all the Node.js server scripts)
 
+7. **npm install cfmeteor** inside *bundle/server* folder (so that this get installed in bundle/server/cfmeteor)
+
+8. Open **bundle/server/server.js** and add **require("cfmeteor");** as the first line so that this cfmeteor module is run before anything else. 
 
 Details
 -----
