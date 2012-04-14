@@ -16,20 +16,20 @@ Usage:
 
 4. Untar the bundle tarball: `tar -xvzf bundle.tar.gz` to `myapp/bundle/` 
 
-#### Step 2: Install cfmeteor module & load it:
+#### Step 2: Clone cfmeteor module & load it:
 
 1. From now on `myapp/bundle` folder is the **actual app**.
 
-2. `CD into myapp/bundle/server/node_modules` and `git clone https://rajaraodv@github.com/rajaraodv/cfmeteor.git`
+2. `CD into myapp/bundle/server/node_modules` and `git clone https://rajaraodv@github.com/rajaraodv/cfmeteor.git` (PS: I couldn't publish this a npm module because pre-compiled stuff are filtered/removed by npm)
 
 3. Open `bundle/server/server.js` and add `require("cfmeteor");` as the first line so that this cfmeteor module is run before anything else.
 
 #### Step 3: Uploading meteor.com apps to Cloud Foundry:
-1. From inside, `myapp/bundle`, do `vmc push myapp --runtime node06`
+1. From inside, `myapp/bundle`, do `vmc push myapp --runtime node06` (your app name need not be bundle, & can be anything)
 
 2. And when vmc asks for "Do you need any services?", bind to MongoDB service (db service name doesn't matter) 
 
-3. That's it, you should have your app fully working by now.
+3. That's it, you should have your app working on Cloud Foundry!
 
 
 Details
@@ -41,7 +41,7 @@ Meteor apps need 'node-fibers' module. But Node-fibers module is essentially C++
 
 	But, Meteor.com apps already comes with fibers module, so this script automatically replaces the default one with Ubuntu one when running on Cloud Foundry(only over there - so that you can run this app both locally and on CF w/o any further changes).
 
-2. Sets process.env.PORT & process.env.MONGO_URL values required by Meteor.com app
+2. Sets `process.env.PORT` & `process.env.MONGO_URL` values required by Meteor.com app
 
 
 License
