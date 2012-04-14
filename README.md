@@ -3,7 +3,6 @@ CFMeteor
 
 CFMeteor is a helper module that helps run <http://www.meteor.com> apps on Cloud Foundry
 
-
 Usage:
 ------
 #### Step 1: Extract Meteor.com app's _*entire*_ source:
@@ -21,16 +20,14 @@ Usage:
 
 1. From now on `myapp/bundle` folder is the **actual app**.
 
-2. `CD into myapp/bundle/server` (this is the main folder for all the Node.js server-side scripts)
+2. `CD into myapp/bundle/server/node_modules` and `git clone https://rajaraodv@github.com/rajaraodv/cfmeteor.git`
 
-3. `npm install cfmeteor` **inside bundle/server** folder (so that this get installed in **bundle/server/cfmeteor**)
-
-4. Open `bundle/server/server.js` and add `require("cfmeteor");` as the first line so that this cfmeteor module is run before anything else.
+3. Open `bundle/server/server.js` and add `require("cfmeteor");` as the first line so that this cfmeteor module is run before anything else.
 
 #### Step 3: Uploading meteor.com apps to Cloud Foundry:
 1. From inside, `myapp/bundle`, do `vmc push myapp --runtime node06`
 
-2. And when vmc asks for "Do you need any services?", bind to MongoDB
+2. And when vmc asks for "Do you need any services?", bind to MongoDB service 
 
 
 Details
@@ -40,8 +37,11 @@ This module provides following:
 1. Ubuntu pre-compiled fibers module:
 Meteor apps need 'node-fibers' module. But Node-fibers module is essentially C++ extension and needs compiling before it can be used. Cloud Foundry runs on Ubuntu and so we can't just upload fibers module that's compiled on developer's (mostly mac or windows). This module comes with Ubuntu compiled fibers.
 
-	But, Meteor.com apps already comes with fibers module, so this script automatically replaces the default one with Ubuntu one when running on Cloud Foundry(only over there).
+	But, Meteor.com apps already comes with fibers module, so this script automatically replaces the default one with Ubuntu one when running on Cloud Foundry(only over there - so that you can run this app both locally and on CF w/o any further changes).
 
 2. Sets process.env.PORT & process.env.MONGO_URL values required by Meteor.com app
 
 
+License
+-------
+MIT license
