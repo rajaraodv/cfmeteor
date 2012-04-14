@@ -1,103 +1,32 @@
-CloudFoundry
+CFMeteor
 ============
 
-cloudfoundry is a Node.js helper library for http://www.cloudfoundry.org/
+CFMeteor is a helper module that helps run http://www.meteor.com apps on Cloud Foundry
 
 
-Usage
+Usage:
+------
+1. Create a Meteor app by following instructions here: http://docs.meteor.com/#quickstart
+
+2. But instead of deploying to meteor.com's servers by doing 'meteor deploy app.meteor.com', we will install on Cloud Foundry.
+
+3. Do "meteor bundle" this collects all the libraries required and creates a bundle.tar.gz file in your app directory
+
+4. Untar the bundle tarball: tar -xvzf bundle.tar.gz 
+
+5. CD into bundle/server (this is the main folder for all the Node.js server scripts)
+
+6. npm install cfmeteor inside bundle/server folder (so that this get installed in bundle/server/cfmeteor)
+
+
+Details
 -----
-Use npm or download. Then add to your code:
+This module provides following:
 
-	var cloudfoundry = require('cloudfoundry');
-	
-	// is app running in cloud?
-	cloudfoundry.cloud
-	
-	// host you should use
-	cloudfoundry.host
-	
-	// port you should use
-	cloudfoundry.port
-	
-	// your app information
-	cloudfoundry.app
-	
-	{
-	    instance_id: '7bcc459686eda42a8d696b3b398ed6d1',
-	    instance_index: 0,
-	    name: 'example',
-	    uris: ['example.cloudfoundry.com'],
-	    users: ['igo@example.com'],
-	    version: '11ad1709af24f01286b2799bc90553454cdb96c6-1',
-	    start: '2011-05-07 19:23:39 +0000',
-	    runtime: 'node',
-	    state_timestamp: 1304796219,
-	    port: 55690,
-	    limits: {
-	        fds: 256,
-	        mem: 134217728,
-	        disk: 2147483648
-	    },
-	    host: '172.30.49.112'
-	}
-	
-	// services bound to your app
-	cloudfoundry.services
-	
-	{
-	    'mongodb-1.8': [{
-	        name: 'test-mongodb',
-	        label: 'mongodb-1.8',
-	        plan: 'free',
-	        credentials: {
-	            hostname: '172.30.48.65',
-	            port: 25009,
-	            username: '...',
-	            password: '...',
-	            name: 'mongodb-...',
-	            db: 'db'
-	        },
-	        version: '1.8'
-	    }],
-	    'redis-2.2': [{
-	        name: 'test-redis',
-	        label: 'redis-2.2',
-	        plan: 'free',
-	        credentials: {
-	            node_id: 'redis_node_2',
-	            hostname: '172.30.48.41',
-	            port: 5008,
-	            password: '...',
-	            name: 'redis-...'
-	        },
-	        version: '2.2'
-	    }],
-	    'mysql-5.1': [{
-	        name: 'test-mysql',
-	        label: 'mysql-5.1',
-	        plan: 'free',
-	        credentials: {
-	            node_id: 'mysql_node_4',
-	            hostname: '172.30.48.23',
-	            port: 3306,
-	            password: '...',
-	            name: '...',
-	            user: '...'
-	        },
-	        version: '5.1'
-	    }]
-	}
-	
-	// quick access to services
-	cloudfoundry.<service>.<name>
-	// for example, quick access to your mongodb
-	cloudfoundry.mongodb['test-mongodb'].credentials.hostname
-	cloudfoundry.mongodb['test-mongodb'].credentials.port
-	cloudfoundry.mongodb['test-mongodb'].credentials.db
-	cloudfoundry.mongodb['test-mongodb'].credentials.username
-	cloudfoundry.mongodb['test-mongodb'].credentials.password
+1. Ubuntu pre-compiled fibers module:
+Meteor apps need 'node-fibers' module. But Node-fibers module is essentially C++ extension and needs compiling before it can be used. Cloud Foundry runs on Ubuntu and so we can't just upload fibers module that's compiled on developer's (mostly mac or windows). This module comes with Ubuntu compiled fibers.
+But, Meteor.com apps already comes with fibers module, so this script automatically replaces the default one with Ubuntu one when running on Cloud Foundry(only over there).
+
+2. Sets process.env.PORT & process.env.MONGO_URL values required by Meteor.com app
 
 
-License
--------
-Released under MIT License. Enjoy and Fork!
